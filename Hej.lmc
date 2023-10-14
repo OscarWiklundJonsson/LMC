@@ -1,0 +1,13 @@
+; This (LMC) code spell out the word "Hej" and then halts (HLT).
+; It loads the values from memory locations h, e, and j and outputs them to the output terminal (OTC) in sequence.
+
+        LDA H ;  Loads the value from memory location H (which is 72) into the accumulator.
+        OTC ; Outputs the value in the accumulator (72) to the output terminal, which corresponds to the ASCII character 'H'.
+        LDA e ; Loads the value from memory location e (which is 101) into the accumulator.
+        OTC ; Outputs the value in the accumulator (101) to the output terminal, which corresponds to the ASCII character 'e'.
+        LDA j; Loads the value from memory location j (which is 106) into the accumulator.
+        OTC ; Outputs the value in the accumulator (106) to the output terminal, which corresponds to the ASCII character 'j'.
+        HLT ;Halts the program
+H       DAT 72
+e       DAT 101
+j       DAt 106
