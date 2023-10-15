@@ -1,0 +1,19 @@
+INP         ; Input a value from the user
+STA number  ; Store the input in the 'number' memory location
+
+LOOP        ; Start of the loop
+LDA number  ; Load the value from 'number' into the accumulator
+OUT         ; Output the value to the user
+SUB one     ; Subtract 1 from the accumulator
+STA number  ; Store the result back in 'number'
+BRZ STOP    ; If the result is 0, branch to the STOP label
+BRA LOOP    ; Branch unconditionally back to LOOP
+
+STOP        ; Label for the stop section
+LDA number  ; Load the value from 'number' into the accumulator
+SUB number  ; Subtract the original 'number' to get back to the original value
+OUT         ; Output the result
+HLT         ; Halt the program
+
+number  DAT  ; Data memory location for storing the user's input
+one     DAT 1 ; Data memory location for the value 1
