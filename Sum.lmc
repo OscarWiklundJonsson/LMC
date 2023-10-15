@@ -1,0 +1,25 @@
+INP         ; Input a value from the user and store it in 'n1'
+STA n1
+
+INP         ; Input another value from the user and store it in 'n2'
+STA n2
+
+LOOP        ; Start of the loop
+LDA total   ; Load the 'total' into the accumulator
+ADD n1      ; Add the value in 'n1' to the accumulator
+STA total   ; Store the result in 'total'
+LDA n2      ; Load the value in 'n2' into the accumulator
+SUB ett     ; Subtract 1 ('ett') from the accumulator
+STA n2      ; Store the result back in 'n2'
+BRP LOOP    ; Branch to LOOP if the result is positive (not zero)
+
+LDA total   ; Load the 'total' into the accumulator
+SUB n1      ; Subtract the value in 'n1' to reset 'total'
+STA total   ; Store the result in 'total'
+OUT         ; Output the final value in 'total'
+HLT         ; Halt the program
+
+n1      DAT  ; Data memory location for 'n1'
+n2      DAT  ; Data memory location for 'n2'
+ett     DAT 1 ; Data memory location for the value 1
+total   DAT 0 ; Data memory location to store the total
