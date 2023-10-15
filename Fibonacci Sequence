@@ -1,0 +1,39 @@
+INP         ; Input a value from the user
+STA x       ; Store the input value in memory location 'x'
+
+INP         ; Input another value from the user
+STA y       ; Store the input value in memory location 'y'
+
+INP         ; Input one more value from the user
+STA lmt     ; Store the input value in memory location 'lmt'
+
+LDA x       ; Load the value from memory location 'x' into the accumulator
+OUT         ; Output the value in the accumulator (x)
+LDA y       ; Load the value from memory location 'y' into the accumulator
+OUT         ; Output the value in the accumulator (y)
+
+loop        ; Start of the loop
+LDA lmt     ; Load the value from memory location 'lmt' into the accumulator
+BRZ end     ; If the accumulator is 0, branch to the 'end' label
+SUB one     ; Subtract 1 from the accumulator
+STA lmt     ; Store the result back in 'lmt'
+LDA x       ; Load the value from memory location 'x' into the accumulator
+ADD y       ; Add the value in 'y' to the accumulator
+STA z       ; Store the result in memory location 'z'
+OUT         ; Output the value in the accumulator (z)
+LDA y       ; Load the value from memory location 'y' into the accumulator
+STA x       ; Store the value in 'x'
+LDA z       ; Load the value from memory location 'z' into the accumulator
+STA y       ; Store the value in 'y'
+BRA loop    ; Branch unconditionally back to the 'loop' label
+
+end         ; Label for the end of the program
+LDA z       ; Load the value from memory location 'z' into the accumulator
+SUB z       ; Subtract the value in 'z' from the accumulator (effectively setting z to 0)
+HLT         ; Halt the program
+
+x    DAT     ; Data memory location for 'x'
+y    DAT     ; Data memory location for 'y'
+z    DAT     ; Data memory location for 'z'
+lmt   DAT    ; Data memory location for 'lmt'
+one   DAT 1  ; Data memory location for the value 1
