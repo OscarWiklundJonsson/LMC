@@ -1,0 +1,27 @@
+INP M         ; Input a value and store it in memory location 'M'
+STA M         ; Store the value from 'M' in memory location 'M'
+
+INP N         ; Input another value and store it in memory location 'N'
+STA N         ; Store the value from 'N' in memory location 'N'
+
+LOOP          ; Start of the loop
+LDA M         ; Load the value from 'M' into the accumulator
+BRZ END       ; If the accumulator is 0, branch to the END label
+SUB N         ; Subtract the value from 'N' from the accumulator
+STA M         ; Store the result back in 'M'
+LDA ANS       ; Load the value from 'ANS' into the accumulator
+ADD ONE       ; Add 1 ('ONE') to the accumulator
+STA ANS       ; Store the result in 'ANS'
+BRA LOOP      ; Branch unconditionally back to LOOP
+
+END           ; Label for the end of the program
+LDA ANS       ; Load the value from 'ANS' into the accumulator
+OUT           ; Output the result
+SUB ANS       ; Subtract the value from 'ANS' from the accumulator (effectively setting ANS to 0)
+STA ANS       ; Store the result back in 'ANS'
+HLT           ; Halt the program
+
+M    DAT      ; Data memory location for 'M'
+N    DAT      ; Data memory location for 'N'
+ANS  DAT 0    ; Data memory location for 'ANS', initialized to 0
+ONE  DAT 1    ; Data memory location for the value 1
